@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CanAIRy Alert Forecasts</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+        html,
+        head,
+        body,
+        #main-container {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        nav {
+            padding: 1rem;
+            border-bottom: 1px solid #000;
+            display: flex;
+        }
+
+        .nav-links {
+            flex-grow: 1;
+            justify-content: end;
+            display: flex;
+        }
+
+        .nav-link {
+            display: inline-block;
+            font-size: .9rem;
+        }
+
+        #content-container {
+            flex-grow: 1;
+            display: flex;
+            min-height: 0;
+        }
+
+        .title {
+            font-weight: 600;
+        }
+
+        #info-content {
+            margin: auto;
+            max-width: 448px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-container">
+        <nav>
+            <div class="title">CanAIRy Alert Forecasts</div>
+            <div class="nav-links">
+                <a class="nav-link" href="https://github.com/wri/canairy-alert-forecasts" target="_blank" rel="noopener noreferrer">Github</a>
+            </div>
+        </nav>
+        <div id="observablehq-viewof-stationId-4b7c0e67"></div>
+        <div id="info-content">
+            <p>Use the map to select a station and retrieve its 5-day air quality forecast. It may take some time for
+                the data to load.</p>
+            <div id="observablehq-viewof-date-4b7c0e67" style="justify-content:center"></div>
+            <div id="observablehq-stationSelection-4b7c0e67"></div>
+        </div>
+        <div id="observablehq-pm25_plot-4b7c0e67"></div>
+        <div id="observablehq-o3_plot-4b7c0e67"></div>
+        <div id="observablehq-no2_plot-4b7c0e67"></div>
+        <div id="observablehq-temp_plot-4b7c0e67"></div>
+        <div id="observablehq-precip_plot-4b7c0e67"></div>
+        <div id="observablehq-wind_plot-4b7c0e67"></div>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+    <script type="module">
+        import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+        import define from "https://api.observablehq.com/d/a20efd360a90d378@latest.js?v=3";
+        new Runtime().module(define, name => {
+            if (name === "viewof stationId") return new Inspector(document.querySelector("#observablehq-viewof-stationId-4b7c0e67"));
+            if (name === "viewof date") return new Inspector(document.querySelector("#observablehq-viewof-date-4b7c0e67"));
+            if (name === "stationSelection") return new Inspector(document.querySelector("#observablehq-stationSelection-4b7c0e67"));
+            if (name === "pm25_plot") return new Inspector(document.querySelector("#observablehq-pm25_plot-4b7c0e67"));
+            if (name === "o3_plot") return new Inspector(document.querySelector("#observablehq-o3_plot-4b7c0e67"));
+            if (name === "no2_plot") return new Inspector(document.querySelector("#observablehq-no2_plot-4b7c0e67"));
+            if (name === "temp_plot") return new Inspector(document.querySelector("#observablehq-temp_plot-4b7c0e67"));
+            if (name === "precip_plot") return new Inspector(document.querySelector("#observablehq-precip_plot-4b7c0e67"));
+            if (name === "wind_plot") return new Inspector(document.querySelector("#observablehq-wind_plot-4b7c0e67"));
+            return ["jsonURL", "forecast", "getUrl", "fcast", "epa_aqi_plot", "airq", "pm25_plot1", "pm25_plot2", "pm25_plot3", "rolling", "avg_pm25"].includes(name);
+        });
+    </script>
+</body>
